@@ -12,18 +12,26 @@ import WatchConnectivity
 final class TableInterfaceController: WKInterfaceController {
     static let tableRowIdentifier = "TableRow"
     @IBOutlet weak var table: WKInterfaceTable!
-    private var labels = [String]()
-
+    private let tableDataPersistanceService = TableDataPersistanceService()
+    private let communicationService = CommunicationService.instance
+    private var tableRows = [String]()
+    
     override func awake(withContext context: Any?) {
         print("table interface controller awaken, with context: ", context)
-        if let data = context as? Array<String> {
-            labels = data
-        }
-        let numberOfRows = labels.count
-        table.setNumberOfRows(numberOfRows, withRowType: TableInterfaceController.tableRowIdentifier)
-        for index in 0..<numberOfRows {
-            guard let tableRow = table.rowController(at: index) as? TableRow else { return }
-            tableRow.textLabel.setText(labels[index])
+        communicationService.addDelegate(self)
+        updateTable()
+    }
+    
+    func updateTable() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.tableRows = self.tableDataPersistanceService.getTableData()
+            let numberOfRows = self.tableRows.count
+            self.table.setNumberOfRows(numberOfRows, withRowType: TableInterfaceController.tableRowIdentifier)
+            for index in 0..<numberOfRows {
+                guard let tableRow = self.table.rowController(at: index) as? TableRow else { return }
+                tableRow.textLabel.setText(self.tableRows[index])
+            }
         }
     }
     
@@ -35,10 +43,23 @@ final class TableInterfaceController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         print("Will DEactivate table interface controller.")
+        communicationService.removeDelegate(withId: id)
     }
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        let messageContext = labels[rowIndex]
+        let messageContext = tableRows[rowIndex]
         presentController(withName: "ModalInterface", context: messageContext)
+    }
+}
+
+extension TableInterfaceController: CommunicationServiceDelegate {
+    var id: String {
+        get {
+            "tableId"
+        }
+    }
+    
+    func onDataReceived() {
+        updateTable()
     }
 }

@@ -23,6 +23,8 @@
 		A55BB91527C4DB1000A73E27 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BB91427C4DB1000A73E27 /* ComplicationController.swift */; };
 		A55BB91727C4DB1100A73E27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55BB91627C4DB1100A73E27 /* Assets.xcassets */; };
 		A59DE52527C632AC00824616 /* ModalInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59DE52427C632AC00824616 /* ModalInterfaceController.swift */; };
+		A5A94D0C27C6412B000B0103 /* ConnectivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A94D0B27C6412B000B0103 /* ConnectivityService.swift */; };
+		A5A94D0E27C6525F000B0103 /* TableDataPersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A94D0D27C6525F000B0103 /* TableDataPersistanceService.swift */; };
 		A5C48E3927C62ACF006CC4AD /* TableInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C48E3827C62ACF006CC4AD /* TableInterfaceController.swift */; };
 		A5C48E3B27C62D14006CC4AD /* TableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C48E3A27C62D14006CC4AD /* TableRow.swift */; };
 /* End PBXBuildFile section */
@@ -90,6 +92,8 @@
 		A55BB91827C4DB1100A73E27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A55BB91927C4DB1100A73E27 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		A59DE52427C632AC00824616 /* ModalInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalInterfaceController.swift; sourceTree = "<group>"; };
+		A5A94D0B27C6412B000B0103 /* ConnectivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityService.swift; sourceTree = "<group>"; };
+		A5A94D0D27C6525F000B0103 /* TableDataPersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataPersistanceService.swift; sourceTree = "<group>"; };
 		A5C48E3827C62ACF006CC4AD /* TableInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableInterfaceController.swift; sourceTree = "<group>"; };
 		A5C48E3A27C62D14006CC4AD /* TableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +162,7 @@
 		A55BB90D27C4DB1000A73E27 /* connectivity WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A5A94D0A27C640FF000B0103 /* Services */,
 				A5C48E3727C62A9A006CC4AD /* Interfaces */,
 				A55BB91027C4DB1000A73E27 /* ExtensionDelegate.swift */,
 				A55BB91227C4DB1000A73E27 /* NotificationController.swift */,
@@ -178,11 +183,20 @@
 			path = Table;
 			sourceTree = "<group>";
 		};
+		A5A94D0A27C640FF000B0103 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A5A94D0B27C6412B000B0103 /* ConnectivityService.swift */,
+				A5A94D0D27C6525F000B0103 /* TableDataPersistanceService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		A5C48E3727C62A9A006CC4AD /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				A5A94D0927C63CE9000B0103 /* Table */,
 				A55BB90E27C4DB1000A73E27 /* InterfaceController.swift */,
+				A5A94D0927C63CE9000B0103 /* Table */,
 				A59DE52427C632AC00824616 /* ModalInterfaceController.swift */,
 			);
 			path = Interfaces;
@@ -334,6 +348,8 @@
 				A55BB91327C4DB1000A73E27 /* NotificationController.swift in Sources */,
 				A55BB91527C4DB1000A73E27 /* ComplicationController.swift in Sources */,
 				A55BB91127C4DB1000A73E27 /* ExtensionDelegate.swift in Sources */,
+				A5A94D0E27C6525F000B0103 /* TableDataPersistanceService.swift in Sources */,
+				A5A94D0C27C6412B000B0103 /* ConnectivityService.swift in Sources */,
 				A55BB90F27C4DB1000A73E27 /* InterfaceController.swift in Sources */,
 				A59DE52527C632AC00824616 /* ModalInterfaceController.swift in Sources */,
 				A5C48E3B27C62D14006CC4AD /* TableRow.swift in Sources */,

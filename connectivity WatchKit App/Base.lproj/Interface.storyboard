@@ -49,6 +49,7 @@
             <objects>
                 <controller id="5mJ-6a-2Zq" customClass="TableInterfaceController" customModule="connectivity_WatchKit_App" customModuleProvider="target">
                     <items>
+                        <label width="1" height="0.20000000000000001" alignment="left" text="Table data" textAlignment="center" id="bd6-65-5ku"/>
                         <table alignment="left" spacing="8" id="9Je-6P-5eO">
                             <items>
                                 <tableRow identifier="TableRow" id="sGt-ac-fEL" customClass="TableRow" customModule="connectivity_WatchKit_App" customModuleProvider="target">

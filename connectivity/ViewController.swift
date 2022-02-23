@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         print("Is reachable: ", wcSession.isReachable)
         let text = fieldd.text ?? "empty"
         let data = text.split(separator: " ")
-        let message = ["data": data]
+        let message = ["tableData": data]
         do {
             try wcSession.updateApplicationContext(message)
             wcSession.sendMessage(message) { reply in
