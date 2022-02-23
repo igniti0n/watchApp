@@ -6,17 +6,50 @@
 //
 
 import UIKit
+import WatchConnectivity
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, WCSessionDelegate {
     var window: UIWindow?
-
+    let wcSession = WCSession.default
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        print("@session did complete with: acctivation state: ", activationState.rawValue)
+        guard activationState == .activated else {
+            print("Session is not activated.")
+            return
+        }
+        print("Is paired: ", wcSession.isPaired)
+        print("Is app installed: ", wcSession.isWatchAppInstalled)
+        print("Is reachable: ", wcSession.isReachable)
+        let message = ["data": ["aaaa","bbbb","cccc","dddd"]]
+        do {
+            try wcSession.updateApplicationContext(message)
+            wcSession.sendMessage(message, replyHandler: nil, errorHandler: nil)
+            print("Updated application context :D ")
+        } catch {
+            print("Error while updating application context :(")
+        }
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        print("@session did becomee inactive: ", session)
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        print("@session did deactivate: ", session)
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        // Check if session is supported and activate it, oon iPad for ex dont support watches, so its not supported.
+        if(WCSession.isSupported()) {
+            wcSession.delegate = self
+            wcSession.activate()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

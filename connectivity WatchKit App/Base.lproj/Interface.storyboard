@@ -1,16 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14256" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="19529" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14243"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14219"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="19514"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Home Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="HomeInterfaceController" customModule="connectivity_WatchKit_Extension">
+                    <items>
+                        <label width="1" height="0.59999999999999998" alignment="left" text="Welcome!" textAlignment="center" id="Y9X-KH-3a3"/>
+                        <button width="1" alignment="left" title="Start" id="VVt-GQ-V4f">
+                            <connections>
+                                <segue destination="5mJ-6a-2Zq" kind="push" id="Zzo-vt-Vrb"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="label" destination="Y9X-KH-3a3" id="7km-Ns-J4F"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="-104" y="29"/>
+        </scene>
+        <!--ModalInterface-->
+        <scene sceneID="Edr-PB-X2m">
+            <objects>
+                <controller identifier="ModalInterface" title="ModalInterface" id="mYy-J5-Ti9" customClass="ModalInterfaceController" customModule="connectivity_WatchKit_Extension">
+                    <items>
+                        <label width="1" height="0.59999999999999998" alignment="left" text="Label" textAlignment="center" id="O7f-zH-hC1"/>
+                        <button width="1" height="0.29999999999999999" alignment="left" title="Button" id="QXW-GW-8Yc">
+                            <connections>
+                                <action selector="onButtonPressed" destination="mYy-J5-Ti9" id="xUj-2q-74t"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="label" destination="O7f-zH-hC1" id="a5W-0u-4GM"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="205" y="-269"/>
+        </scene>
+        <!--Table Interface Controller-->
+        <scene sceneID="mM0-hp-z2z">
+            <objects>
+                <controller id="5mJ-6a-2Zq" customClass="TableInterfaceController" customModule="connectivity_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <table alignment="left" spacing="8" id="9Je-6P-5eO">
+                            <items>
+                                <tableRow identifier="TableRow" id="sGt-ac-fEL" customClass="TableRow" customModule="connectivity_WatchKit_App" customModuleProvider="target">
+                                    <group key="rootItem" width="1" alignment="left" id="OqH-qu-Ism">
+                                        <items>
+                                            <label width="1" height="1" alignment="left" text="Label" textAlignment="center" id="xeG-lb-ymY"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="textLabel" destination="xeG-lb-ymY" id="bfm-mH-f9e"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="9Je-6P-5eO" id="urZ-zj-TMV"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="29"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -32,14 +91,14 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="connectivity_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">
             <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="connectivity_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="345"/>
         </scene>
